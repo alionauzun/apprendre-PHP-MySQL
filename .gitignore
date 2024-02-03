@@ -1,6 +1,6 @@
 dashboard/
 img/
-applications.html/
-index.php/
-bitnami.css/
-webbalizer/
+webalizer/
+applications.html
+index.php
+bitnami.css
