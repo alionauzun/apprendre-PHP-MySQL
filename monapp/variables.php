@@ -43,3 +43,22 @@ $recipes = [
         'is_enabled' => false,
     ],
 ];
+
+
+
+// -------Si la recette est activée (  is_enabled  à vrai), affichez le titre, la recette et l'auteur de la recette dans des balises HTML appropriées.
+
+// foreach ($recipes as $recipe) {
+//     //verifie si la clé 'is_enabled' existe et si sa valeur est égale à true
+//     if (isset($recipe['is_enabled']) && $recipe['is_enabled'] === true) {
+//         //la recette est activée (is_enabled est vrai)
+//         echo '<div>';
+//         echo "<h2>{$recipe['title']}</h2>";
+//         echo "<p>{$recipe['recipe']}</p>";
+//         echo "<i>{$recipe['author']}</i>";
+//         echo '</div>';
+//     } else {
+//         // La recette est désactivée (is_enabled est faux ou la clé n'existe pas)
+//         echo "La recette '{$recipe['title']}' est désactivée.<br>";
+//     }
+// }
