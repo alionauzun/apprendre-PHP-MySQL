@@ -5,14 +5,48 @@
  * ces données doivent être testées et vérifiées.
  */
 
-$getData = $_GET;
+$postData = $_POST;
 
 if (
-    !isset($getData['email'])
-    || !filter_var($getData['email'], FILTER_VALIDATE_EMAIL)
-    || empty($getData['message'])
-    || trim($getData['message']) === ''
+    !isset($postData['email'])
+    || !filter_var($postData['email'], FILTER_VALIDATE_EMAIL)
+    || empty($postData['message'])
+    || trim($postData['message']) === ''
 ) {
     echo ('Il faut un email et un message valides pour soumettre le formulaire.');
     return;
 }
+
+?>
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site de Recettes - Contact reçu</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+
+        <?php require_once(__DIR__ . '/header.php'); ?>
+        <h1>Message bien reçu !</h1>
+
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Rappel de vos informations</h5>
+                <p class="card-text"><b>Email</b> : <?php echo ($postData['email']); ?></p>
+                <!-- On utilise la fonction strip_tags pour éviter que l'utilisateur ne puisse injecter du code HTML dans le formulaire -->
+                <!-- On peut utilise également la fonction htmlspecialchars pour éviter ca -->
+                <!--La différence entre strip_tags et htmlspecialchars est que strip_tags supprime les balises HTML, tandis que htmlspecialchars les encode, mais les laisse visibles.-->
+                <p class="card-text"><b>Message</b> : <?php echo (strip_tags($postData['message'])); ?></p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
