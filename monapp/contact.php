@@ -15,8 +15,11 @@
         <?php require_once(__DIR__ . '/header.php'); ?>
         <h1>Contactez nous</h1>
         <!-- formulaire de contact -->
-        <!--envoi des données vers la page submit_contact.php avec la méthode GET-->
-        <form action="submit_contact.php" method="GET">
+        <!--envoi des données vers la page submit_contact.php avec la méthode Post, pour eviter que les données soient visibles dans l'url-->
+        <!--Il y a deux attributs très importants à connaître pour la balise <form>  :
+            La méthode :  method  
+            Et la cible :  action (la page qui recevra les données du formulaire, et qui sera chargée de les traiter.) -->
+        <form action="submit_contact.php" method="Post">
             <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
                 <input type="email" class="form-control" id="email" name="email" aria-describedby="email-help">
