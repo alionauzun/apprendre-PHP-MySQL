@@ -1,4 +1,5 @@
 <!-- page d'accueil -->
+<!--inclure les variables et fonctions -->
 <?php
 require_once(__DIR__ . '/variables.php');
 require_once(__DIR__ . '/functions.php');
@@ -22,18 +23,24 @@ require_once(__DIR__ . '/functions.php');
         <?php require_once(__DIR__ . '/header.php'); ?>
         <h1>Site de recettes</h1>
 
-        <p>Bienvenue sur notre site de recettes. Vous trouverez ici des recettes pour tous les goûts et tous les niveaux. </p>
-        <p>Vous pouvez egalement ajouter vos propres recettes.</p>
+        <?php require_once(__DIR__ . '/login.php'); ?>
 
-        <?php foreach (getRecipes($recipes) as $recipe) : ?>
-            <article>
-                <h3><?php echo $recipe['title']; ?></h3>
-                <div><?php echo $recipe['recipe']; ?></div>
-                <i><?php echo displayAuthor($recipe['author'], $users); ?></i>
-            </article>
+        <?php if (isset($loggedUser)) : ?>
+            <div>
+                <p>Bienvenue sur notre site de recettes. Vous trouverez ici des recettes pour tous les goûts et tous les niveaux. </p>
+                <p>Vous pouvez egalement ajouter vos propres recettes.</p>
+            </div>
+            <?php foreach (getRecipes($recipes) as $recipe) : ?>
+                <article>
+                    <h3><?php echo $recipe['title']; ?></h3>
+                    <div><?php echo $recipe['recipe']; ?></div>
+                    <i><?php echo displayAuthor($recipe['author'], $users); ?></i>
+                </article>
+            <?php endforeach ?>
             <!-- endforeach permet de fermer la boucle -->
-        <?php endforeach ?>
+        <?php endif; ?>
     </div>
+
     <!-- inclusion du bas de page du site -->
     <?php require_once(__DIR__ . '/footer.php'); ?>
 </body>
