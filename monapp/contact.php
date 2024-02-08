@@ -14,6 +14,8 @@
 
         <?php require_once(__DIR__ . '/header.php'); ?>
         <h1>Contactez nous</h1>
+        <!-- formulaire de contact -->
+        <!--envoi des données vers la page submit_contact.php avec la méthode GET-->
         <form action="submit_contact.php" method="GET">
             <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
