@@ -17,6 +17,36 @@ if (
     return;
 }
 
+$isFileUploaded = false;
+//Testons si un fichier a été envoyé et s'il n'y a pas d'erreur
+if (isset($_FILES['screenshot']) && $_FILES['screenshot']['error'] === 0) {
+    //Testons si le fichier n'est pas trop gros
+    if ($_FILES['screenshot']['size'] <= 1000000) {
+        echo "L'envoi n'a pas pu être effectué, erreur ou image trop volumineuse";
+        return;
+    }
+    //Testons si l'extension , n'est pas autorisée
+    $fileInfo = pathinfo($_FILES['screenshot']['name']);
+    $extension = $fileInfo['extension'];
+    $allowedExtensions = ['png', 'jpg', 'jpeg', 'gif'];
+    if (!in_array($extension, $allowedExtensions)) {
+        echo "L'envoi n'a pas pu être effectué,l'extension {$extension} n'est pas autorisée";
+        return;
+    }
+
+    // On verifier si le dossier uploads est manquant
+    $path = __DIR__ . '/uploads';
+    if (!is_dir($path)) {
+        echo "L'envoi n'a pas pu être effectué, le dossier uploads est manquant";
+        return;
+    }
+
+    // On peut valider le fichier et le stocker dans un dossier
+    //On déplace le fichier de la mémoire temporaire vers un dossier sur le serveur
+    move_uploaded_file($_FILES['screenshot']['tmp_name'], $path . basename($_FILES['screenshot']['name']));
+    $isFileUploaded = true;
+}
+
 ?>
 
 <!DOCTYPE html>
