@@ -10,13 +10,13 @@ $users = [
         'full_name' => 'Mathieu Nebra',
         'email' => 'mathieu.nebra@exemple.com',
         'age' => 34,
-        'password ' => 'rcT4t4CTCCsfse'
+        'password' => 'rcT4t4CTCCsfse'
     ],
     [
         'full_name' => 'Laurène Castor',
         'email' => 'laurene.castor@exemple.com',
         'age' => 28,
-        'password ' => 'erg1gG234g5fT6'
+        'password' => 'erg1gG234g5fT6'
     ],
 ];
 
